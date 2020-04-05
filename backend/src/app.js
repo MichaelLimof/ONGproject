@@ -2,8 +2,10 @@ const express = require('express')
 const routes = require('./routes')
 const cors = require('cors')
 
-const port = process.env.PORT || 3333
 
+
+
+const {errors} = require ('celebrate')
 
 /*
 GET : Buscar/listar uma informação do back-End
@@ -29,4 +31,6 @@ const app = express();
 app.use(cors())
 app.use(express.json()) 
 app.use(routes)
-app.listen(port)
+app.use(errors())
+
+module.exports = app
